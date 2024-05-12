@@ -1,12 +1,10 @@
 services:
   go_app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: golang:bullseye
     container_name: go_app_build_${BUILD_NUMBER}
     working_dir: /opt/app
     volumes:
-      - /var/jenkins_home/workspace/Test/go_app:/opt/app
+      - /${WORKSPACE}:/opt/app
     ports:
       - 9090:9090
     command: /bin/bash -c "sleep infinity && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go && ./main"
