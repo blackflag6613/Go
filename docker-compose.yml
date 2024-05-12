@@ -1,0 +1,10 @@
+services:
+  go_app:
+    image: golang:bullseye
+    container_name: go_app_build_${BUILD_NUMBER}
+    working_dir: /opt/app
+    volumes:
+      - .:/opt/app
+    ports:
+      - 9090:9090
+    command: /bin/bash -c "CGO_ENABLE=0 GOOS=linux GOARCH=amd64 go build main.go && ./main"
