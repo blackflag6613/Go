@@ -6,5 +6,5 @@ services:
     volumes:
       - /root/jenkins/config/workspace/Test/go_app:/opt/app
     ports:
-      - 9090:9090
+      - 9091:9090
     command: /bin/bash -c "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go && ./main"
