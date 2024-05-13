@@ -4,7 +4,8 @@ services:
     container_name: go_app_build_${BUILD_NUMBER}
     working_dir: /opt/app
     volumes:
-      - /root/jenkins/config/workspace/Test/go_app:/opt/app
+#      - /root/jenkins/config/workspace/Test/go_app:/opt/app
+      - ${WORKSPACE}/Test/go_app:/opt/app
     ports:
       - 9091:9090
     command: /bin/bash -c "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go && ./main"
